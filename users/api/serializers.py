@@ -23,3 +23,26 @@ class UserSerializer(serializers.Serializer):
         instance.save()    
         return instance
 
+    def validate_username(self, data):
+        users = User.objects.filter(username=data)
+        if len(users) > 0:
+            if self.instance is not None and self.instance.username != data:       
+                raise serializers.ValidationError("Ya existe ese username")
+        return data
+
+    def validate_email(self, data):
+        users = User.objects.filter(email=data)
+        if len(users) > 0:
+            if self.instance is not None and self.instance.email != data:       
+                raise serializers.ValidationError("Ya existe ese email")
+        return data
+
+
+
+
+
+
+
+
+
+

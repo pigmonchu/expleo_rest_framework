@@ -21,5 +21,5 @@ from users.api.views import UserListAPI, UserDetailAPI
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/', UserListAPI.as_view(), name="user_list_api"),
-    path('api/v1/users/<int:pk>', UserDetailAPI.as_view(), name="user_detail_api"),
+    path('api/v1/users/<int:pk>/', UserDetailAPI.as_view(), name="user_detail_api"),
 ]
